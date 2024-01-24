@@ -3,7 +3,10 @@ const mongoose = require("mongoose");
 const Article = require("./models/article");
 const articleRouter = require("./routes/articles");
 const methodOverride = require("method-override");
+const dotenv = require("dotenv");
 const app = express();
+
+dotenv.config();
 
 mongoose.connect(
   "mongodb+srv://shreyashchandra123:ReDJPvY7RCh1Nahd@shreyash.3mh5ouf.mongodb.net/"
@@ -22,4 +25,4 @@ app.get("/", async (req, res) => {
 });
 app.use("/articles", articleRouter);
 
-app.listen(5000);
+app.listen(process.env.PORT);
